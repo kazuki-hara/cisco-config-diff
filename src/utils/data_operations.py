@@ -1,6 +1,7 @@
 from dictknife import deepmerge
 
-def count_space_num_from_head(word: str)->int:
+
+def count_space_num_from_head(word: str) -> int:
     index = 0
     space_num = 0
     while True:

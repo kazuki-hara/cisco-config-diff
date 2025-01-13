@@ -13,7 +13,7 @@ concurrency:
     cancel-in-progress: true
 
 jobs:
-    test:
+    initial:
         runs-on: ubuntu-latest
         timeout-minutes: 5
 
@@ -31,7 +31,19 @@ jobs:
               
         - name: Install the project
           run: uv sync --all-extras --dev
+    lint:
+        runs-on: ubuntu-latest
+        timeout-minutes: 5
 
+        steps:
+        - name: check format with flake8
+          run: flake8 .
+
+    test:
+        runs-on: ubuntu-latest
+        timeout-minutes: 5
+
+        steps:
         - name: Run tests
           env:
               PYTHONPATH: ${{ github.workspace }}
